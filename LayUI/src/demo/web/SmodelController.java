@@ -162,14 +162,14 @@ public class SmodelController {
 	 */
 	@RequestMapping("/sbmodel_del")
 	@ResponseBody
-	public String bmodel_del(String guid,HttpServletRequest request) throws Exception {
+	public String sbmodel_del(String guid,HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		String role = session.getAttribute("role").toString();
 		String flagStr = null;
 		try {
 			//对模型表中数据进行删除，
 			//联动删除自动生成的描述表
-			String tn = Bmodel.findBmByGuId(guid);
+			String tn = Bmodel.findSBmByGuId(guid);
 			conn = LinkSql.getConn();
 			conn.setAutoCommit(false);
 			String tnDes = tn+"_des";

@@ -41,4 +41,30 @@ public class Bmodel {
 		return bmc;
 	}
 	
+	public static String findSBmByGuId(String guid) throws Exception {
+		// TODO Auto-generated method stub
+		conn = LinkSql.getConn();
+		String bm = LinkSql.adminmName;
+		String sqlCount = "select bm from "+bm+" where guid ='"+guid+"'";
+		ps = conn.prepareStatement(sqlCount);
+		rs = ps.executeQuery();
+		while(rs.next()){
+			bm = rs.getString("bm");
+		}
+		return bm;
+	}
+	public static String findSbmcBybm(String dataName) throws Exception {
+		// TODO Auto-generated method stub
+		conn = LinkSql.getConn();
+		String bm = LinkSql.adminmName;
+		String sqlCount = "select bmc from "+bm+" where bm ='"+dataName+"'";
+		ps = conn.prepareStatement(sqlCount);
+		rs = ps.executeQuery();
+		String bmc= null;
+		while(rs.next()){
+			bmc = rs.getString("bmc");
+		}
+		return bmc;
+	}
+	
 }

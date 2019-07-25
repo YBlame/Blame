@@ -122,7 +122,7 @@
 																.checkStatus(obj.config.id), data = checkStatus.data; //获取选中的数据
 														switch (obj.event) {
 														case 'add':
-															window.location.href = "bmodel_add.jsp";
+															window.location.href = "zhxxMenu_add.jsp";
 															break;
 														};
 													});

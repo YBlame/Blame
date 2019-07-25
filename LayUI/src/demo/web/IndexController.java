@@ -66,6 +66,9 @@ public class IndexController {
 		String bmDes=null;
 		try {
 			bm = Bmodel.findBmByGuId(guid);
+			if (bm.equals("bmodel")) {
+				bm = Bmodel.findSBmByGuId(guid);
+			}
 			bmDes= bm+"_des";
 			if (limit==null) {
 				limit=10;
@@ -147,6 +150,9 @@ public class IndexController {
 		connCreate.setAutoCommit(false);
 		guid = request.getParameter("guid");
 			bmodelName = Bmodel.findBmByGuId(guid);
+			if (bmodelName.equals("bmodel")) {
+				bmodelName = Bmodel.findSBmByGuId(guid);
+			}
 		try{
 			// 插入描述表
 			String sql = "INSERT INTO " + bmodelName + "_des"
@@ -231,6 +237,9 @@ public class IndexController {
 		String sqljoin = null;
 		conn = LinkSql.getConn();
 		dataName = Bmodel.findBmByGuId(guid);
+		if (dataName.equals("bmodel")) {
+			dataName = Bmodel.findSBmByGuId(guid);
+		}
 		String sql = "select zdm,types,zlong,isform"
 				+ " from " + dataName + "_des" + " where guid= ?";
 		ps =LinkSql.Execute(conn,sql,role,dataName + "_des");
@@ -293,6 +302,9 @@ public class IndexController {
 		String bmodelName = null;
 		int flag = 0;
 			bmodelName =  Bmodel.findBmByGuId(guid);
+			if (bmodelName.equals("bmodel")) {
+				bmodelName = Bmodel.findSBmByGuId(guid);
+			}
 		conn = LinkSql.getConn();
 		conn.setAutoCommit(false);
 		String desName = bmodelName + "_des";
@@ -340,6 +352,9 @@ public class IndexController {
 			String bmodelName = null;
 			Map<String, Object> map = new TreeMap<String, Object>();
 			bmodelName = Bmodel.findBmByGuId(guid);
+			if (bmodelName.equals("bmodel")) {
+				bmodelName = Bmodel.findSBmByGuId(guid);
+			}
 			conn = LinkSql.getConn();
 			conn.setAutoCommit(false);
 			String desName = bmodelName + "_des";
@@ -392,6 +407,9 @@ public class IndexController {
 			conn.setAutoCommit(false);
 			int id = Integer.parseInt(request.getParameter("id"));
 			bmodelName = Bmodel.findBmByGuId(guid);
+			if (bmodelName.equals("bmodel")) {
+				bmodelName = Bmodel.findSBmByGuId(guid);
+			}
 			String sqlSelect = "select zdm,types,zlong,isform,id,guid"
 					+ " from " + bmodelName + "_des" + " where id= ?";
 			ps =  LinkSql.Execute(conn,sqlSelect,role,bmodelName + "_des");
