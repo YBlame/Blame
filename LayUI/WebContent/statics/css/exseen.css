@@ -1,0 +1,106 @@
+/* 添加下拉框值 */
+.option {
+	width: 364px;
+	border: 1px solid #C0C0C0;
+	margin-left: 26px;
+	margin-top: 3px;
+	padding: 7px 0 0px 7px;
+	margin-bottom: 7px;
+	clear: both;
+}
+
+.option-item {
+	float: left;
+	width: 50%;
+	margin-bottom: 5px;
+}
+
+.option-input-wrap input[type=text] {
+	width: 153px !important;
+	height: 31px;
+	margin-right: 5px;
+}
+
+.option-sign-wrap {
+	font-size: 25px;
+	font-weight: bold;
+	margin-top: -7px;
+	display: inline-block;
+	color: gray;
+	cursor: pointer
+}
+
+.add_option {
+	border: 1px dashed #04A6F1;
+	float: left;
+	width: 43%;
+	margin-bottom: 5px;
+	height: 31.5px;
+	cursor: pointer
+}
+
+.add_option_sign {
+	float: left;
+	color: #04A6F1;
+	font-size: 33px;
+	font-weight: bold;
+	margin-top: -4.5px;
+	margin-left: 29px;
+	margin-right: 2px;
+}
+
+.add_option_words {
+	color: #04A6F1;
+	margin-top: 5.5px;
+}
+
+.save_button { /* 按钮美化 */
+	float: right;
+}
+
+.rightdiv {
+	box-shadow: 0px 1px 3px rgba(99, 99, 99, 0.3);
+}
+
+
+
+#ulList {
+	border: 1px solid #e6e6fa;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: auto;
+	max-height: 231px;
+	list-style: none;
+	min-width: 160px;
+}
+
+#ulList li div {
+	padding: 6px 11px 6px 11px;
+	background: #f6f6f6;
+	border-bottom: 1px solid #ccc;
+	cursor: pointer;
+}
+
+#ulList li div:hover {
+	padding: 6px 11px 6px 11px;
+	background: #f6f6f6;
+	color: #4169e1;
+	background: #F3D673 !important;
+	cursor: pointer;
+}
+
+#likecol {
+	border: 1px solid #DADADA;
+	color: #888;
+	height: 25px;
+	outline: 0 none;
+	padding: 3px 3px 3px 5px;
+	width: 95%;
+	font-size: 13px;
+	line-height: 15px;
+	box-shadow: inset 0px 1px 4px #ECECEC;
+	-moz-box-shadow: inset 0px 1px 4px #ECECEC;
+	-webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+}
