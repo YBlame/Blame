@@ -18,7 +18,7 @@ public class Bmodel {
 	public static String findBmByGuId(String guid) throws Exception {
 		// TODO Auto-generated method stub
 		conn = LinkSql.getConn();
-		String bm = LinkSql.name;
+		String bm = LinkSql.systemName;
 		String sqlCount = "select bm from "+bm+" where guid ='"+guid+"'";
 		ps = conn.prepareStatement(sqlCount);
 		rs = ps.executeQuery();
@@ -30,7 +30,7 @@ public class Bmodel {
 	public static String findBmcBybm(String dataName) throws Exception {
 		// TODO Auto-generated method stub
 		conn = LinkSql.getConn();
-		String bm = LinkSql.name;
+		String bm = LinkSql.systemName;
 		String sqlCount = "select bmc from "+bm+" where bm ='"+dataName+"'";
 		ps = conn.prepareStatement(sqlCount);
 		rs = ps.executeQuery();

@@ -11,11 +11,9 @@
 		<script src="statics/js/concisejs.js"></script>
 		<script type="text/javascript" src="statics/js/jquery-1.8.0.js"></script>
 			<input id="guidBmodel" name="guidBmodel" style="display: none"
-				value="<%=request.getParameter("guidBmodel")%>" required
-				lay-verify="required" autocomplete="off" class="layui-input">
+				value="<%=request.getParameter("guidBmodel")%>" >
 			<input id="guid" name="guid" style="display: none"
-				value="<%=request.getParameter("guid")%>" required
-				lay-verify="required" autocomplete="off" class="layui-input">
+				value="<%=request.getParameter("guid")%>">
 			<!-- 表名称 -->
 			<input type="hidden" id="bmc" value="<%=request.getParameter("bmc")%>">
 			<!-- flag判断值 -->
@@ -34,18 +32,13 @@
 			</form>
 			<table class="layui-hide" style="width: 98%;height: 99%" id="demo" lay-filter="test"></table>
 			<script type="text/html" id="barDemo">
-				<div class="layui-btn-group">
+					<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail" >添加栏目</a>
   					<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
   					<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-					<c:if test="">
-						<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-					</c:if>
-				</div>			
 			</script>
 			<script type="text/html" id="toolbarDemo">
   				<div class="layui-btn-container">
     				<button type="button" class="layui-btn layui-btn-primary layui-btn-sm" lay-event="add">添加</button>
-					<button type="button" class="layui-btn layui-btn-primary layui-btn-sm" lay-event="delete">返回上一级</button>
 				</div>
 			</script>
 			<script>
@@ -197,10 +190,9 @@
 								                    cols.push(id);
 								                    var bar={
 															title : '操作',
-															width:140,
+															width:200,
 															fixed: 'right',
 															align:'center',
-															sort: true,
 															toolbar : '#barDemo'
 								                        }
 								                    cols.push(bar);
@@ -286,8 +278,7 @@
 									});
 									// 打开查看按钮
 									function openDetail(guid) {
-										window.location = "bzdk_Index.jsp?guid="
-												+ guid;
+										window.location = "findMenu?guid="+guid/* 该guid为当前展会guid */
 									}
 									//表格重载
 									var active = {

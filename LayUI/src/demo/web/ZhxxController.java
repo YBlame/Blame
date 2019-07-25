@@ -12,9 +12,14 @@ import demo.dao.Bmodel;
 public class ZhxxController {
 	@RequestMapping(value = "findZhxx")
 	public void findZhxx(HttpServletRequest request, HttpServletResponse res) throws Exception{
-		String guid = "c3608a0db0af46b19536876089eec0dc";
+		String guid = "a65611e7bc194941a7050bb14000967d";
 		String tn = Bmodel.findBmByGuId(guid);
 		String bmc = Bmodel.findBmcBybm(tn);
-		request.getRequestDispatcher("/doc_Index.jsp?guid="+ guid+"&bmc="+bmc).forward(request, res);
+		request.getRequestDispatcher("zhxx/zhxx_Index.jsp?guid="+ guid+"&bmc="+bmc).forward(request, res);
 	}
+	@RequestMapping(value = "findMenu")
+	public void findMenu(HttpServletRequest request, HttpServletResponse res,String guid) throws Exception{
+		request.getRequestDispatcher("zhxx/menu_Index.jsp?zhxxGuid="+ guid).forward(request, res);
+	}
+	
 }

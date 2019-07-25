@@ -8,7 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class LinkSql {
-	public static String name = "bmodel";
+	//systemName为开发人员中的系统表如：菜单表权限表
+	public static String systemName = "bmodel";
+	
+	//adminName为管理员中的表如：栏目表
+	public static String adminmName = "smodel";
 	private static String driver = "com.mysql.jdbc.Driver";
 	private static String url = "jdbc:mysql://localhost:3306/layui?characterEncoding=UTF-8";
 	private static String username = "y";

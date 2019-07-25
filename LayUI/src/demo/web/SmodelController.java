@@ -23,12 +23,12 @@ import demo.tool.PageUtils;
 import demo.tool.UUIDUtil;
 import net.sf.json.JSONArray;
 /**
- * 模型表的Conntroller层
+ * 管理员中的模型表的Conntroller层
  * @author BLAME
  *
  */
 @Controller
-public class ModelController {
+public class SmodelController {
 	private PreparedStatement ps =null;
 	private ResultSet rs =null;
 	private Connection conn =null;
@@ -39,7 +39,7 @@ public class ModelController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "bmodel_findAll", produces = "text/html;charset=utf-8")
+	@RequestMapping(value = "sbmodel_findAll", produces = "text/html;charset=utf-8")
 	@ResponseBody
 	public Object findAll(PageUtils page,Integer limit,HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
@@ -49,7 +49,7 @@ public class ModelController {
 				limit=10;
 			}
 			page.setRows(limit);
-			String tn =  LinkSql.name;
+			String tn =  LinkSql.adminmName;
 			List desList = new ArrayList();
 			String sqlJoint = " ORDER BY orders asc    limit ?,? ";
 			String sql = "SELECT guid,bmc,bm,orders from "+tn+" ";
@@ -70,9 +70,9 @@ public class ModelController {
 	            desList.add(rowData);
 	        }
 	        //计数
-			String sqlCount = "SELECT count(guid) FROM "+LinkSql.name+" WHERE 1=1 ";
+			String sqlCount = "SELECT count(guid) FROM "+LinkSql.adminmName+" WHERE 1=1 ";
 			conn = LinkSql.getConn();
-			ps =LinkSql.Execute(conn,sqlCount,role,LinkSql.name);
+			ps =LinkSql.Execute(conn,sqlCount,role,LinkSql.adminmName);
 			rs = ps.executeQuery();
 			md=null;
 			columnCount=0;
@@ -98,7 +98,7 @@ public class ModelController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("bmodel_toIndex")
+	@RequestMapping("sbmodel_toIndex")
 	public String toIndex() throws Exception {
 		return "bmodel_Index";
 	}
@@ -110,7 +110,7 @@ public class ModelController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/bmodel_doAdd")
+	@RequestMapping("/sbmodel_doAdd")
 	public String doAdd(String bmc,String bm,String orders,HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		String role = session.getAttribute("role").toString();
@@ -118,10 +118,10 @@ public class ModelController {
 			String uuid = UUIDUtil.getUUID();
 			//连接数据库对模型表进行添加
 			//完成后新增对应描述表
-			String sqlAdd="INSERT INTO "+LinkSql.name+" (guid, bmc, bm, orders ) VALUES (?, ?, ?, ? );";
+			String sqlAdd="INSERT INTO "+LinkSql.adminmName+" (guid, bmc, bm, orders ) VALUES (?, ?, ?, ? );";
 			conn = LinkSql.getConn();
 			conn.setAutoCommit(false);
-			ps =LinkSql.Execute(conn,sqlAdd,role,LinkSql.name);
+			ps =LinkSql.Execute(conn,sqlAdd,role,LinkSql.adminmName);
 			ps.setString(1, uuid);
 			ps.setString(2, bmc);
 			ps.setString(3, bm);
@@ -160,7 +160,7 @@ public class ModelController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/bmodel_del")
+	@RequestMapping("/sbmodel_del")
 	@ResponseBody
 	public String bmodel_del(String guid,HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
@@ -200,8 +200,8 @@ public class ModelController {
 			}
 			if (flag==0) {
 				//删除模型表中数据
-				String sqlDel="DELETE FROM "+LinkSql.name+" WHERE guid = ?";
-				ps = LinkSql.Execute(conn,sqlDel,role,LinkSql.name);
+				String sqlDel="DELETE FROM "+LinkSql.adminmName+" WHERE guid = ?";
+				ps = LinkSql.Execute(conn,sqlDel,role,LinkSql.adminmName);
 				ps.setString(1, guid);
 				flag = ps.executeUpdate();
 				conn.commit();
